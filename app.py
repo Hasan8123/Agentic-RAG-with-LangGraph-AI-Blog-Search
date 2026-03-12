@@ -4,7 +4,10 @@ from qdrant_client import QdrantClient
 from uuid import uuid4
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.tools.retriever import create_retriever_tool
+try:
+    from langchain.tools.retriever import create_retriever_tool
+except ImportError:
+    from langchain_core.tools import create_retriever_tool
 
 from typing import Annotated, Literal, Sequence
 from typing_extensions import TypedDict
